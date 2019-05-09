@@ -1,0 +1,14 @@
+# playbook to deploy wordpress LAMP stack onto EC2 ubuntu
+# Created By: Sumanth
+
+---
+
+- hosts: wordpress
+  become: true
+  gather_facts: no
+  tasks:
+  - name: Transfer the script
+    copy: src=wordpressinc.sh dest=/home/ubuntu mode=0777
+
+  - name: Execute the script
+    command: sh /home/ubuntu/wordpressinc.sh
